@@ -1,4 +1,4 @@
 inputs
-solutions/*.dSYM
+solutions/**/*.dSYM
 solutions/**/*.o
 solutions/**/*.out
