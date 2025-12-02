@@ -1,5 +1,6 @@
 inputs
 solutions/**/*
+!solutions/**/
 !solutions/**/*.cpp
 !solutions/**/*.h
 !solutions/**/*.hpp
