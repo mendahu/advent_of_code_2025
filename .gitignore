@@ -1,4 +1,5 @@
 inputs
-solutions/**/*.dSYM
-solutions/**/*.o
-solutions/**/*.out
+solutions/**/*
+!solutions/**/*.cpp
+!solutions/**/*.h
+!solutions/**/*.hpp
