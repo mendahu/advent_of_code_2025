@@ -8,10 +8,6 @@
 std::vector<std::string> split_string_in_equal_parts(std::string input, int count) {
   std::vector<std::string> parts;
 
-  if (input.length() % count != 0) {
-    throw std::invalid_argument("Input length is not divisible by count");
-  }
-
   int part_len = input.length() / count;
   for (int i = 0; i < count; i++) {
     parts.push_back(input.substr(i * part_len, part_len));
@@ -19,9 +15,10 @@ std::vector<std::string> split_string_in_equal_parts(std::string input, int coun
   return parts;
 }
 
-bool all_vector_values_are_equal(std::vector<std::string> values) {
-  for (std::string value : values) {
-    if (value != values[values.size() - 1]) {
+bool all_vector_values_are_equal(std::vector<std::string>* values) {
+  int size = values->size();
+  for (std::string value : *values) {
+    if (value != (*values)[size - 1]) {
       return false;
     }
   }
@@ -38,13 +35,13 @@ bool string_has_all_repeating_values(std::string value) {
   for (int j = 2; j <= len; j++) {
     std::vector<std::string> parts;
 
-    try {
-      parts = split_string_in_equal_parts(value, j);
-    } catch (const std::invalid_argument& e) {
+    if (len % j != 0) {
       continue;
     }
 
-    if (all_vector_values_are_equal(parts)) {
+    parts = split_string_in_equal_parts(value, j);
+
+    if (all_vector_values_are_equal(&parts)) {
       return true;
     }
   }
